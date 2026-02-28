@@ -1,308 +1,251 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Burn the System | Constituição</title>
+<title>Constituição - Burn the System</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    scroll-behavior:smooth;
 }
 
 body{
-    font-family: Arial, sans-serif;
-    background: #000;
-    color:#eee;
+    font-family:'Montserrat',sans-serif;
+    background: linear-gradient(to bottom, #000000 0%, #070002 70%, #110003 100%);
+    color:#e5e5e5;
     overflow-x:hidden;
 }
 
-/* Canvas */
-#fireCanvas{
+/* ===== CANVAS BRASAS ===== */
+canvas{
     position:fixed;
     top:0;
     left:0;
-    width:100%;
-    height:100%;
-    pointer-events:none;
-    z-index:0;
+    z-index:-1;
 }
 
-/* Menu lateral */
-aside{
+/* ===== MENU LATERAL DIREITO ===== */
+.menu{
     position:fixed;
+    right:0;
     top:0;
-    left:0;
     width:220px;
-    height:100%;
-    background:#000;
-    padding:20px;
-    border-right:2px solid #ff4d00;
-    z-index:10;
-    overflow-y:auto;
+    height:100vh;
+    background:rgba(0,0,0,0.92);
+    border-left:1px solid rgba(255,215,0,0.15);
+    padding:30px 20px;
 }
 
-aside h2{
-    color:#ff4d00;
-    margin-bottom:15px;
+.menu h3{
+    color:gold;
+    font-family:'Cinzel',serif;
+    margin-bottom:20px;
 }
 
-aside a{
+.menu a{
     display:block;
     text-decoration:none;
-    color:#bbb;
-    margin:8px 0;
+    color:#aaa;
+    margin-bottom:12px;
     transition:0.3s;
 }
 
-aside a:hover{
-    color:#ff4d00;
-    transform:translateX(5px);
+.menu a:hover{
+    color:gold;
+    transform:translateX(-6px);
 }
 
-/* Conteúdo */
-main{
-    margin-left:240px;
-    padding:60px;
-    position:relative;
-    z-index:5;
+/* ===== CONTEÚDO ===== */
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:120px 40px;
+    padding-right:260px;
 }
 
 h1{
-    font-size:48px;
-    color:#ff4d00;
-    margin-bottom:10px;
+    font-family:'Cinzel',serif;
+    font-size:70px;
+    text-align:center;
+    color:gold;
+    text-shadow:0 0 20px rgba(255,215,0,0.7);
+    margin-bottom:20px;
 }
 
-h2{
-    color:#ffae00;
-    margin-top:50px;
-    margin-bottom:15px;
+.subtitle{
+    text-align:center;
+    margin-bottom:100px;
+    color:#ccc;
 }
 
-ul{
-    margin-left:20px;
-    margin-bottom:15px;
+/* ===== BOX DOURADA (igual print) ===== */
+.intro-box{
+    background:rgba(20,20,20,0.85);
+    border-radius:12px;
+    padding:40px;
+    box-shadow:0 0 30px rgba(255,215,0,0.25);
+    margin-bottom:120px;
+    transition:0.4s;
 }
 
-section{
-    margin-bottom:50px;
+.intro-box:hover{
+    box-shadow:0 0 45px rgba(255,215,0,0.4);
 }
 
-/* Botão topo */
-.top-btn{
-    position:fixed;
-    bottom:30px;
-    right:30px;
-    background:#ff4d00;
-    color:#000;
-    padding:10px 15px;
-    border:none;
-    cursor:pointer;
-    font-weight:bold;
-    display:none;
-    z-index:20;
+.section{
+    margin-bottom:100px;
+    opacity:0;
+    transform:translateY(40px);
+    transition:0.8s ease;
 }
-.top-btn:hover{
-    background:#ffae00;
+
+.section.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.section h2{
+    font-family:'Cinzel',serif;
+    color:gold;
+    margin-bottom:20px;
+    transition:0.3s;
+}
+
+.section h2:hover{
+    text-shadow:0 0 12px gold;
+}
+
+.section p{
+    line-height:1.7;
+    color:#ccc;
+}
+
+/* RESPONSIVO */
+@media(max-width:900px){
+    .menu{display:none;}
+    .container{padding-right:40px;}
 }
 </style>
 </head>
 <body>
 
-<canvas id="fireCanvas"></canvas>
+<canvas id="embers"></canvas>
 
-<aside>
-<h2>📜 Índice</h2>
-<a href="#intro">Introdução</a>
-<a href="#s1">1. Respeito</a>
-<a href="#s2">2. Estrutura</a>
-<a href="#s3">3. TS</a>
-<a href="#s4">4. Eventos</a>
-<a href="#s5">5. Drops</a>
-<a href="#s6">6. Convivência</a>
-<a href="#s7">7. Confidencialidade</a>
-<a href="#s8">8. Punições</a>
-<a href="#s9">9. Oferecemos</a>
-<a href="#s10">10. Esperamos</a>
-<a href="#s11">11. Membro de Honra</a>
-<a href="#s12">12. Hero</a>
-<a href="#s13">13. Atualização</a>
-</aside>
+<div class="menu">
+    <h3>Índice</h3>
+    <a href="#s1">1. Respeito</a>
+    <a href="#s2">2. Estrutura</a>
+    <a href="#s3">3. Comunicação</a>
+</div>
 
-<main>
+<div class="container">
+    <h1>CONSTITUIÇÃO</h1>
+    <div class="subtitle">Aliança Burn the System</div>
 
-<section id="intro">
-<h1>Burn the System</h1>
-<p>Constituição Oficial da Aliança</p>
-<p>Não buscamos apenas vencer eventos. Buscamos ser referência de organização, respeito e força no servidor.</p>
-</section>
+    <div class="intro-box">
+        Seja bem-vindo(a) à nossa Aliança!  
+        Aqui ficará o texto oficial de introdução da Constituição.
+    </div>
 
-<section id="s1">
-<h2>🔹 1. Respeito acima de tudo</h2>
-<ul>
-<li>Proibido xingamentos, preconceito e ofensas.</li>
-<li>Respeite limites individuais.</li>
-<li>Conflitos devem ser tratados com o Líder da CP.</li>
-</ul>
-</section>
+    <div class="section" id="s1">
+        <h2>1. Respeito acima de tudo</h2>
+        <p>Texto exemplo. Você pode substituir depois pelo conteúdo oficial.</p>
+    </div>
 
-<section id="s2">
-<h2>🔹 2. Estrutura de Liderança</h2>
-<ul>
-<li>5 CPs com Líder e Sub-Líder.</li>
-<li>Conselho com voto igualitário.</li>
-<li>Líder da Aliança desempata votações.</li>
-<li>Hierarquia deve ser respeitada.</li>
-</ul>
-</section>
+    <div class="section" id="s2">
+        <h2>2. Estrutura de Liderança</h2>
+        <p>Texto exemplo. Organização e hierarquia definidas fortalecem a aliança.</p>
+    </div>
 
-<section id="s3">
-<h2>🔹 3. Comunicação no TS</h2>
-<ul>
-<li>Uso obrigatório durante gameplay.</li>
-<li>Comunicação objetiva em eventos.</li>
-<li>Evitar política, religião e excessos.</li>
-</ul>
-</section>
-
-<section id="s4">
-<h2>🔹 4. Eventos e Compromissos</h2>
-<ul>
-<li>Presença prioritária em Epic Boss, Siege e Olympiad.</li>
-<li>Seguir comandos da liderança.</li>
-</ul>
-</section>
-
-<section id="s5">
-<h2>🔹 5. Drop de Itens e Joias</h2>
-<ul>
-<li>Proibido pegar drop diretamente.</li>
-<li>Distribuição via Líder de CP.</li>
-<li>Regras específicas para joias.</li>
-</ul>
-</section>
-
-<section id="s6">
-<h2>🔹 6. Regras de Convivência</h2>
-<ul>
-<li>Ajudar é filosofia da Aliança.</li>
-<li>Proibido atacar membro.</li>
-<li>Respeitar spots e ordem de chegada.</li>
-</ul>
-</section>
-
-<section id="s7">
-<h2>🔹 7. Confidencialidade</h2>
-<p>Informações estratégicas não devem sair da Aliança.</p>
-</section>
-
-<section id="s8">
-<h2>🔹 8. Punições</h2>
-<ul>
-<li>Advertência</li>
-<li>Débito de pontos</li>
-<li>Expulsão</li>
-</ul>
-</section>
-
-<section id="s9">
-<h2>🔹 9. O que a Aliança oferece</h2>
-<ul>
-<li>Organização</li>
-<li>Proteção</li>
-<li>Distribuição justa</li>
-<li>Ambiente saudável</li>
-</ul>
-</section>
-
-<section id="s10">
-<h2>🔹 10. O que esperamos</h2>
-<ul>
-<li>Compromisso</li>
-<li>Respeito</li>
-<li>Lealdade</li>
-</ul>
-</section>
-
-<section id="s11">
-<h2>🔹 11. Membro de Honra</h2>
-<p>Reconhecimento especial com insígnia e autoridade.</p>
-</section>
-
-<section id="s12">
-<h2>🔹 12. Hero</h2>
-<p>Preferência para classe base ativa e participação constante.</p>
-</section>
-
-<section id="s13">
-<h2>🔹 13. Atualização da Constituição</h2>
-<p>Regras podem ser revisadas conforme evolução da Aliança.</p>
-</section>
-
-</main>
-
-<button class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">🔝 Topo</button>
+    <div class="section" id="s3">
+        <h2>3. Comunicação</h2>
+        <p>Texto exemplo. Comunicação clara e estratégica é essencial.</p>
+    </div>
+</div>
 
 <script>
-window.addEventListener("scroll",()=>{
-document.querySelector(".top-btn").style.display=
-window.scrollY>400?"block":"none";
+/* ===== REVELAÇÃO AO SCROLL ===== */
+const sections=document.querySelectorAll('.section');
+window.addEventListener('scroll',()=>{
+    sections.forEach(sec=>{
+        const top=sec.getBoundingClientRect().top;
+        if(top<window.innerHeight-100){
+            sec.classList.add('visible');
+        }
+    });
 });
 
-/* ===== FOGO REALISTA CANVAS ===== */
+/* ===== BRASAS DISCRETAS ===== */
+const canvas = document.getElementById("embers");
+const ctx = canvas.getContext("2d");
 
-const canvas=document.getElementById("fireCanvas");
-const ctx=canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
+let particles = [];
 
-window.addEventListener("resize",()=>{
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-});
+class Ember {
+    constructor() {
+        this.reset();
+    }
 
-class Particle{
-constructor(){this.reset();}
-reset(){
-this.x=Math.random()*canvas.width;
-this.y=canvas.height+Math.random()*100;
-this.size=Math.random()*3+1;
-this.speedY=Math.random()*1.5+0.5;
-this.speedX=(Math.random()-0.5)*0.6;
-this.opacity=Math.random()*0.6+0.4;
-const colors=["255,220,120","255,170,60","255,120,0","255,60,0"];
-this.color=colors[Math.floor(Math.random()*colors.length)];
+    reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = canvas.height + Math.random() * 50;
+        this.size = Math.random() * 2 + 0.5;
+        this.speedY = Math.random() * 0.6 + 0.2;
+        this.speedX = (Math.random() - 0.5) * 0.5;
+        this.opacity = Math.random() * 0.5 + 0.3;
+        this.life = Math.random() * 100 + 50;
+    }
+
+    update() {
+        this.y -= this.speedY;
+        this.x += this.speedX;
+        this.life--;
+
+        // leve oscilação tipo vento
+        this.x += Math.sin(this.y * 0.01) * 0.2;
+
+        if (this.life <= 0 || this.y < 0) {
+            this.reset();
+        }
+    }
+
+    draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 80, 20, ${this.opacity})`;
+        ctx.shadowColor = "rgba(255, 60, 0, 0.8)";
+        ctx.shadowBlur = 8;
+        ctx.fill();
+    }
 }
-update(){
-this.y-=this.speedY;
-this.x+=this.speedX;
-this.opacity-=0.002;
-if(this.y<0||this.opacity<=0)this.reset();
-}
-draw(){
-ctx.beginPath();
-ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
-ctx.fillStyle=`rgba(${this.color},${this.opacity})`;
-ctx.shadowColor=`rgba(${this.color},1)`;
-ctx.shadowBlur=20;
-ctx.fill();
-}
+
+for (let i = 0; i < 120; i++) {
+    particles.push(new Ember());
 }
 
-const particles=[];
-for(let i=0;i<150;i++){particles.push(new Particle());}
-
-function animate(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-particles.forEach(p=>{p.update();p.draw();});
-requestAnimationFrame(animate);
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+        p.update();
+        p.draw();
+    });
+    requestAnimationFrame(animate);
 }
+
 animate();
+
+window.addEventListener("resize", () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
 </script>
 
 </body>
