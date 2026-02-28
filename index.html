@@ -6,15 +6,22 @@
 <title>Burn the System | Constituição</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
 body{
     font-family: Arial, sans-serif;
-    background: radial-gradient(circle at center, #1a0000 0%, #000 70%);
+    background: #000;
     color:#eee;
     overflow-x:hidden;
 }
 
-canvas{
+/* Canvas */
+#fireCanvas{
     position:fixed;
     top:0;
     left:0;
@@ -24,17 +31,18 @@ canvas{
     z-index:0;
 }
 
+/* Menu lateral */
 aside{
     position:fixed;
-    left:0;
     top:0;
-    width:240px;
+    left:0;
+    width:220px;
     height:100%;
-    background:rgba(0,0,0,0.85);
+    background:#000;
     padding:20px;
-    overflow-y:auto;
+    border-right:2px solid #ff4d00;
     z-index:10;
-    border-right:1px solid #ff4d00;
+    overflow-y:auto;
 }
 
 aside h2{
@@ -44,76 +52,63 @@ aside h2{
 
 aside a{
     display:block;
-    color:#aaa;
     text-decoration:none;
+    color:#bbb;
     margin:8px 0;
     transition:0.3s;
 }
+
 aside a:hover{
     color:#ff4d00;
     transform:translateX(5px);
 }
 
+/* Conteúdo */
 main{
-    margin-left:260px;
-    padding:40px;
+    margin-left:240px;
+    padding:60px;
     position:relative;
     z-index:5;
 }
 
-section{
-    margin-bottom:80px;
-    opacity:0;
-    transform:translateY(40px);
-    transition:1s ease;
-}
-
-section.visible{
-    opacity:1;
-    transform:translateY(0);
-}
-
 h1{
-    font-size:42px;
-    margin-bottom:20px;
+    font-size:48px;
     color:#ff4d00;
+    margin-bottom:10px;
 }
 
 h2{
-    margin-bottom:15px;
     color:#ffae00;
+    margin-top:50px;
+    margin-bottom:15px;
 }
 
 ul{
     margin-left:20px;
-    margin-bottom:10px;
+    margin-bottom:15px;
 }
 
+section{
+    margin-bottom:50px;
+}
+
+/* Botão topo */
 .top-btn{
     position:fixed;
-    right:30px;
     bottom:30px;
+    right:30px;
     background:#ff4d00;
     color:#000;
     padding:10px 15px;
-    cursor:pointer;
     border:none;
+    cursor:pointer;
     font-weight:bold;
-    z-index:20;
     display:none;
+    z-index:20;
 }
 .top-btn:hover{
     background:#ffae00;
 }
-
-header{
-    margin-bottom:60px;
-}
-
-header p{
-    margin-bottom:10px;
-}
-
 </style>
 </head>
 <body>
@@ -123,107 +118,128 @@ header p{
 <aside>
 <h2>📜 Índice</h2>
 <a href="#intro">Introdução</a>
-<a href="#sec1">1. Respeito</a>
-<a href="#sec2">2. Estrutura</a>
-<a href="#sec3">3. TS</a>
-<a href="#sec4">4. Eventos</a>
-<a href="#sec5">5. Drops</a>
-<a href="#sec6">6. Convivência</a>
-<a href="#sec7">7. Confidencialidade</a>
-<a href="#sec8">8. Punições</a>
-<a href="#sec9">9. Oferecemos</a>
-<a href="#sec10">10. Esperamos</a>
-<a href="#sec11">11. Membro de Honra</a>
-<a href="#sec12">12. Hero</a>
-<a href="#sec13">13. Atualização</a>
+<a href="#s1">1. Respeito</a>
+<a href="#s2">2. Estrutura</a>
+<a href="#s3">3. TS</a>
+<a href="#s4">4. Eventos</a>
+<a href="#s5">5. Drops</a>
+<a href="#s6">6. Convivência</a>
+<a href="#s7">7. Confidencialidade</a>
+<a href="#s8">8. Punições</a>
+<a href="#s9">9. Oferecemos</a>
+<a href="#s10">10. Esperamos</a>
+<a href="#s11">11. Membro de Honra</a>
+<a href="#s12">12. Hero</a>
+<a href="#s13">13. Atualização</a>
 </aside>
 
 <main>
 
-<section id="intro" class="visible">
+<section id="intro">
 <h1>Burn the System</h1>
 <p>Constituição Oficial da Aliança</p>
 <p>Não buscamos apenas vencer eventos. Buscamos ser referência de organização, respeito e força no servidor.</p>
 </section>
 
-<section id="sec1"><h2>🔹 1. Respeito acima de tudo</h2>
+<section id="s1">
+<h2>🔹 1. Respeito acima de tudo</h2>
 <ul>
 <li>Proibido xingamentos, preconceito e ofensas.</li>
 <li>Respeite limites individuais.</li>
 <li>Conflitos devem ser tratados com o Líder da CP.</li>
-</ul></section>
+</ul>
+</section>
 
-<section id="sec2"><h2>🔹 2. Estrutura de Liderança</h2>
+<section id="s2">
+<h2>🔹 2. Estrutura de Liderança</h2>
 <ul>
 <li>5 CPs com Líder e Sub-Líder.</li>
 <li>Conselho com voto igualitário.</li>
 <li>Líder da Aliança desempata votações.</li>
 <li>Hierarquia deve ser respeitada.</li>
-</ul></section>
+</ul>
+</section>
 
-<section id="sec3"><h2>🔹 3. Comunicação no TS</h2>
+<section id="s3">
+<h2>🔹 3. Comunicação no TS</h2>
 <ul>
 <li>Uso obrigatório durante gameplay.</li>
 <li>Comunicação objetiva em eventos.</li>
 <li>Evitar política, religião e excessos.</li>
-</ul></section>
+</ul>
+</section>
 
-<section id="sec4"><h2>🔹 4. Eventos e Compromissos</h2>
+<section id="s4">
+<h2>🔹 4. Eventos e Compromissos</h2>
 <ul>
 <li>Presença prioritária em Epic Boss, Siege e Olympiad.</li>
 <li>Seguir comandos da liderança.</li>
-</ul></section>
+</ul>
+</section>
 
-<section id="sec5"><h2>🔹 5. Drop de Itens e Joias</h2>
+<section id="s5">
+<h2>🔹 5. Drop de Itens e Joias</h2>
 <ul>
 <li>Proibido pegar drop diretamente.</li>
 <li>Distribuição via Líder de CP.</li>
 <li>Regras específicas para joias.</li>
-</ul></section>
+</ul>
+</section>
 
-<section id="sec6"><h2>🔹 6. Regras de Convivência</h2>
+<section id="s6">
+<h2>🔹 6. Regras de Convivência</h2>
 <ul>
 <li>Ajudar é filosofia da Aliança.</li>
 <li>Proibido atacar membro.</li>
 <li>Respeitar spots e ordem de chegada.</li>
-</ul></section>
+</ul>
+</section>
 
-<section id="sec7"><h2>🔹 7. Confidencialidade</h2>
-<ul>
-<li>Informações estratégicas não devem sair da Aliança.</li>
-</ul></section>
+<section id="s7">
+<h2>🔹 7. Confidencialidade</h2>
+<p>Informações estratégicas não devem sair da Aliança.</p>
+</section>
 
-<section id="sec8"><h2>🔹 8. Punições</h2>
+<section id="s8">
+<h2>🔹 8. Punições</h2>
 <ul>
 <li>Advertência</li>
 <li>Débito de pontos</li>
 <li>Expulsão</li>
-</ul></section>
+</ul>
+</section>
 
-<section id="sec9"><h2>🔹 9. O que a Aliança oferece</h2>
+<section id="s9">
+<h2>🔹 9. O que a Aliança oferece</h2>
 <ul>
 <li>Organização</li>
 <li>Proteção</li>
 <li>Distribuição justa</li>
 <li>Ambiente saudável</li>
-</ul></section>
+</ul>
+</section>
 
-<section id="sec10"><h2>🔹 10. O que esperamos</h2>
+<section id="s10">
+<h2>🔹 10. O que esperamos</h2>
 <ul>
 <li>Compromisso</li>
 <li>Respeito</li>
 <li>Lealdade</li>
-</ul></section>
+</ul>
+</section>
 
-<section id="sec11"><h2>🔹 11. Membro de Honra</h2>
+<section id="s11">
+<h2>🔹 11. Membro de Honra</h2>
 <p>Reconhecimento especial com insígnia e autoridade.</p>
 </section>
 
-<section id="sec12"><h2>🔹 12. Hero</h2>
+<section id="s12">
+<h2>🔹 12. Hero</h2>
 <p>Preferência para classe base ativa e participação constante.</p>
 </section>
 
-<section id="sec13"><h2>🔹 13. Atualização da Constituição</h2>
+<section id="s13">
+<h2>🔹 13. Atualização da Constituição</h2>
 <p>Regras podem ser revisadas conforme evolução da Aliança.</p>
 </section>
 
@@ -232,24 +248,16 @@ header p{
 <button class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">🔝 Topo</button>
 
 <script>
-// Scroll reveal
-const sections=document.querySelectorAll("section");
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){entry.target.classList.add("visible");}
-});
-},{threshold:0.2});
-sections.forEach(sec=>observer.observe(sec));
-
-// Botão topo
 window.addEventListener("scroll",()=>{
 document.querySelector(".top-btn").style.display=
 window.scrollY>400?"block":"none";
 });
 
-// Canvas fogo realista
+/* ===== FOGO REALISTA CANVAS ===== */
+
 const canvas=document.getElementById("fireCanvas");
 const ctx=canvas.getContext("2d");
+
 canvas.width=window.innerWidth;
 canvas.height=window.innerHeight;
 
@@ -265,9 +273,9 @@ this.x=Math.random()*canvas.width;
 this.y=canvas.height+Math.random()*100;
 this.size=Math.random()*3+1;
 this.speedY=Math.random()*1.5+0.5;
-this.speedX=(Math.random()-0.5)*0.5;
-this.opacity=Math.random()*0.5+0.5;
-const colors=["255,200,0","255,140,0","255,90,0","255,40,0"];
+this.speedX=(Math.random()-0.5)*0.6;
+this.opacity=Math.random()*0.6+0.4;
+const colors=["255,220,120","255,170,60","255,120,0","255,60,0"];
 this.color=colors[Math.floor(Math.random()*colors.length)];
 }
 update(){
@@ -281,13 +289,13 @@ ctx.beginPath();
 ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
 ctx.fillStyle=`rgba(${this.color},${this.opacity})`;
 ctx.shadowColor=`rgba(${this.color},1)`;
-ctx.shadowBlur=15;
+ctx.shadowBlur=20;
 ctx.fill();
 }
 }
 
 const particles=[];
-for(let i=0;i<140;i++){particles.push(new Particle());}
+for(let i=0;i<150;i++){particles.push(new Particle());}
 
 function animate(){
 ctx.clearRect(0,0,canvas.width,canvas.height);
