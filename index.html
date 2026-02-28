@@ -1,281 +1,300 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Constituição - Burn the System</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=MedievalSharp&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Burn the System | Constituição</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
 body{
-  background: radial-gradient(circle at center, #1a0000 0%, #000000 70%);
-  color:#eaeaea;
-  font-family:'Montserrat', sans-serif;
-  overflow-x:hidden;
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle at center, #1a0000 0%, #000 70%);
+    color:#eee;
+    overflow-x:hidden;
 }
 
-/* 🔥 FIRE */
-<canvas id="fireCanvas"></canvas>
-#fireCanvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
+canvas{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    z-index:0;
 }
 
-/* HERO */
-.hero{
-  height:100vh;
-  background:
-  linear-gradient(rgba(0,0,0,0.85),rgba(0,0,0,0.95)),
-  url('https://images.alphacoders.com/709/709124.jpg') center/cover fixed;
-  display:flex;align-items:center;justify-content:center;
-  text-align:center;padding:20px;
-}
-.hero h1{
-  font-family:'Cinzel', serif;
-  font-size:4rem;
-  color:#d4af37;
-  text-shadow:0 0 20px rgba(212,175,55,0.8);
-}
-.hero p{margin-top:20px}
-
-/* 📜 MENU LATERAL */
-.sidebar{
-  position:fixed;
-  left:0;top:0;
-  height:100vh;
-  width:250px;
-  background:#0b0b0b;
-  border-right:1px solid rgba(212,175,55,0.2);
-  padding:20px;
-  overflow-y:auto;
-}
-.sidebar h3{
-  font-family:'Cinzel', serif;
-  color:#d4af37;
-  margin-bottom:15px;
-}
-.sidebar a{
-  display:block;
-  padding:8px;
-  color:#aaa;
-  text-decoration:none;
-  font-size:14px;
-  transition:0.3s;
-}
-.sidebar a:hover,
-.sidebar a.active{
-  color:#d4af37;
-  transform:translateX(5px);
+aside{
+    position:fixed;
+    left:0;
+    top:0;
+    width:240px;
+    height:100%;
+    background:rgba(0,0,0,0.85);
+    padding:20px;
+    overflow-y:auto;
+    z-index:10;
+    border-right:1px solid #ff4d00;
 }
 
-/* MAIN */
+aside h2{
+    color:#ff4d00;
+    margin-bottom:15px;
+}
+
+aside a{
+    display:block;
+    color:#aaa;
+    text-decoration:none;
+    margin:8px 0;
+    transition:0.3s;
+}
+aside a:hover{
+    color:#ff4d00;
+    transform:translateX(5px);
+}
+
 main{
-  margin-left:270px;
-  padding:40px;
+    margin-left:260px;
+    padding:40px;
+    position:relative;
+    z-index:5;
 }
-section{margin-bottom:80px;}
+
+section{
+    margin-bottom:80px;
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s ease;
+}
+
+section.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+h1{
+    font-size:42px;
+    margin-bottom:20px;
+    color:#ff4d00;
+}
+
 h2{
-  font-family:'Cinzel', serif;
-  color:#d4af37;
-  margin-bottom:20px;
-}
-.card{
-  background:#111;
-  padding:25px;
-  border-radius:10px;
-  border:1px solid rgba(212,175,55,0.2);
-  box-shadow:0 0 15px rgba(0,0,0,0.6);
-  margin-bottom:20px;
-  opacity:0;
-  transform:translateY(30px);
-  transition:0.6s ease;
-  white-space:pre-line;
-}
-.card.reveal{
-  opacity:1;
-  transform:translateY(0);
+    margin-bottom:15px;
+    color:#ffae00;
 }
 
-/* 🔝 BOTÃO TOPO */
-#topBtn{
-  position:fixed;
-  bottom:30px;
-  right:30px;
-  background:#d4af37;
-  color:#000;
-  padding:12px 16px;
-  border-radius:50%;
-  font-weight:bold;
-  cursor:pointer;
-  display:none;
-  box-shadow:0 0 15px rgba(212,175,55,0.7);
-  transition:0.3s;
+ul{
+    margin-left:20px;
+    margin-bottom:10px;
 }
-#topBtn:hover{transform:scale(1.1);}
 
-/* RESPONSIVO */
-@media(max-width:900px){
-  .sidebar{display:none;}
-  main{margin-left:0;}
+.top-btn{
+    position:fixed;
+    right:30px;
+    bottom:30px;
+    background:#ff4d00;
+    color:#000;
+    padding:10px 15px;
+    cursor:pointer;
+    border:none;
+    font-weight:bold;
+    z-index:20;
+    display:none;
 }
+.top-btn:hover{
+    background:#ffae00;
+}
+
+header{
+    margin-bottom:60px;
+}
+
+header p{
+    margin-bottom:10px;
+}
+
 </style>
 </head>
 <body>
 
 <canvas id="fireCanvas"></canvas>
 
-<div class="sidebar">
-  <h3>📜 Índice</h3>
-  <a href="#s1">1. Respeito</a>
-  <a href="#s2">2. Liderança</a>
-  <a href="#s3">3. TeamSpeak</a>
-  <a href="#s4">4. Eventos</a>
-  <a href="#s5">5. Drops</a>
-  <a href="#s6">6. Convivência</a>
-  <a href="#s7">7. Confidencialidade</a>
-  <a href="#s8">8. Punições</a>
-  <a href="#s9">9. Oferecemos</a>
-  <a href="#s10">10. Esperamos</a>
-  <a href="#s11">11. Honra</a>
-  <a href="#s12">12. Hero</a>
-  <a href="#s13">13. Atualização</a>
-</div>
-
-<div class="hero">
-  <div>
-    <h1>BURN THE SYSTEM</h1>
-    <p>Constituição Oficial da Aliança</p>
-  </div>
-</div>
+<aside>
+<h2>📜 Índice</h2>
+<a href="#intro">Introdução</a>
+<a href="#sec1">1. Respeito</a>
+<a href="#sec2">2. Estrutura</a>
+<a href="#sec3">3. TS</a>
+<a href="#sec4">4. Eventos</a>
+<a href="#sec5">5. Drops</a>
+<a href="#sec6">6. Convivência</a>
+<a href="#sec7">7. Confidencialidade</a>
+<a href="#sec8">8. Punições</a>
+<a href="#sec9">9. Oferecemos</a>
+<a href="#sec10">10. Esperamos</a>
+<a href="#sec11">11. Membro de Honra</a>
+<a href="#sec12">12. Hero</a>
+<a href="#sec13">13. Atualização</a>
+</aside>
 
 <main>
 
-<section id="s1"><h2>🔹 1. Respeito acima de tudo</h2><div class="card">[COLE AQUI TEXTO COMPLETO DA SEÇÃO 1]</div></section>
-<section id="s2"><h2>🔹 2. Estrutura de Liderança</h2><div class="card">[COLE AQUI TEXTO COMPLETO DA SEÇÃO 2]</div></section>
-<section id="s3"><h2>🔹 3. Comunicação no TeamSpeak</h2><div class="card">[COLE AQUI TEXTO COMPLETO DA SEÇÃO 3]</div></section>
-<section id="s4"><h2>🔹 4. Eventos e Compromissos</h2><div class="card">[COLE AQUI TEXTO COMPLETO]</div></section>
-<section id="s5"><h2>🔹 5. Drop de Itens e Joias</h2><div class="card">[COLE AQUI TEXTO COMPLETO]</div></section>
-<section id="s6"><h2>🔹 6. Regras de Convivência</h2><div class="card">[COLE AQUI TEXTO COMPLETO]</div></section>
-<section id="s7"><h2>🔹 7. Confidencialidade</h2><div class="card">[COLE AQUI TEXTO COMPLETO]</div></section>
-<section id="s8"><h2>🔹 8. Punições</h2><div class="card">[COLE AQUI TEXTO COMPLETO]</div></section>
-<section id="s9"><h2>🔹 9. O que a Aliança oferece</h2><div class="card">[COLE AQUI TEXTO COMPLETO]</div></section>
-<section id="s10"><h2>🔹 10. O que esperamos</h2><div class="card">[COLE AQUI TEXTO COMPLETO]</div></section>
-<section id="s11"><h2>🔹 11. Membro de Honra</h2><div class="card">[COLE AQUI TEXTO COMPLETO]</div></section>
-<section id="s12"><h2>🔹 12. Hero</h2><div class="card">[COLE AQUI TEXTO COMPLETO]</div></section>
-<section id="s13"><h2>🔹 13. Atualização da Constituição</h2><div class="card">[COLE AQUI TEXTO COMPLETO]</div></section>
+<section id="intro" class="visible">
+<h1>Burn the System</h1>
+<p>Constituição Oficial da Aliança</p>
+<p>Não buscamos apenas vencer eventos. Buscamos ser referência de organização, respeito e força no servidor.</p>
+</section>
+
+<section id="sec1"><h2>🔹 1. Respeito acima de tudo</h2>
+<ul>
+<li>Proibido xingamentos, preconceito e ofensas.</li>
+<li>Respeite limites individuais.</li>
+<li>Conflitos devem ser tratados com o Líder da CP.</li>
+</ul></section>
+
+<section id="sec2"><h2>🔹 2. Estrutura de Liderança</h2>
+<ul>
+<li>5 CPs com Líder e Sub-Líder.</li>
+<li>Conselho com voto igualitário.</li>
+<li>Líder da Aliança desempata votações.</li>
+<li>Hierarquia deve ser respeitada.</li>
+</ul></section>
+
+<section id="sec3"><h2>🔹 3. Comunicação no TS</h2>
+<ul>
+<li>Uso obrigatório durante gameplay.</li>
+<li>Comunicação objetiva em eventos.</li>
+<li>Evitar política, religião e excessos.</li>
+</ul></section>
+
+<section id="sec4"><h2>🔹 4. Eventos e Compromissos</h2>
+<ul>
+<li>Presença prioritária em Epic Boss, Siege e Olympiad.</li>
+<li>Seguir comandos da liderança.</li>
+</ul></section>
+
+<section id="sec5"><h2>🔹 5. Drop de Itens e Joias</h2>
+<ul>
+<li>Proibido pegar drop diretamente.</li>
+<li>Distribuição via Líder de CP.</li>
+<li>Regras específicas para joias.</li>
+</ul></section>
+
+<section id="sec6"><h2>🔹 6. Regras de Convivência</h2>
+<ul>
+<li>Ajudar é filosofia da Aliança.</li>
+<li>Proibido atacar membro.</li>
+<li>Respeitar spots e ordem de chegada.</li>
+</ul></section>
+
+<section id="sec7"><h2>🔹 7. Confidencialidade</h2>
+<ul>
+<li>Informações estratégicas não devem sair da Aliança.</li>
+</ul></section>
+
+<section id="sec8"><h2>🔹 8. Punições</h2>
+<ul>
+<li>Advertência</li>
+<li>Débito de pontos</li>
+<li>Expulsão</li>
+</ul></section>
+
+<section id="sec9"><h2>🔹 9. O que a Aliança oferece</h2>
+<ul>
+<li>Organização</li>
+<li>Proteção</li>
+<li>Distribuição justa</li>
+<li>Ambiente saudável</li>
+</ul></section>
+
+<section id="sec10"><h2>🔹 10. O que esperamos</h2>
+<ul>
+<li>Compromisso</li>
+<li>Respeito</li>
+<li>Lealdade</li>
+</ul></section>
+
+<section id="sec11"><h2>🔹 11. Membro de Honra</h2>
+<p>Reconhecimento especial com insígnia e autoridade.</p>
+</section>
+
+<section id="sec12"><h2>🔹 12. Hero</h2>
+<p>Preferência para classe base ativa e participação constante.</p>
+</section>
+
+<section id="sec13"><h2>🔹 13. Atualização da Constituição</h2>
+<p>Regras podem ser revisadas conforme evolução da Aliança.</p>
+</section>
 
 </main>
 
-<div id="topBtn">↑</div>
+<button class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">🔝 Topo</button>
 
 <script>
-// 🔥 FIRE
-<script>
-const canvas = document.getElementById("fireCanvas");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-window.addEventListener("resize", () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+// Scroll reveal
+const sections=document.querySelectorAll("section");
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){entry.target.classList.add("visible");}
 });
+},{threshold:0.2});
+sections.forEach(sec=>observer.observe(sec));
 
-class Particle {
-  constructor() {
-    this.reset();
-  }
-
-  reset() {
-    this.x = Math.random() * canvas.width;
-    this.y = canvas.height + Math.random() * 100;
-    this.size = Math.random() * 3 + 1;
-    this.speedY = Math.random() * 1.5 + 0.5;
-    this.speedX = (Math.random() - 0.5) * 0.5;
-    this.opacity = Math.random() * 0.5 + 0.5;
-
-    const colors = [
-      "255,200,0",
-      "255,140,0",
-      "255,90,0",
-      "255,40,0"
-    ];
-    this.color = colors[Math.floor(Math.random() * colors.length)];
-  }
-
-  update() {
-    this.y -= this.speedY;
-    this.x += this.speedX;
-    this.opacity -= 0.002;
-
-    if (this.y < -10 || this.opacity <= 0) {
-      this.reset();
-    }
-  }
-
-  draw() {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(${this.color}, ${this.opacity})`;
-    ctx.shadowColor = `rgba(${this.color}, 1)`;
-    ctx.shadowBlur = 15;
-    ctx.fill();
-  }
-}
-
-const particles = [];
-const particleCount = 120;
-
-for (let i = 0; i < particleCount; i++) {
-  particles.push(new Particle());
-}
-
-function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  particles.forEach(p => {
-    p.update();
-    p.draw();
-  });
-
-  requestAnimationFrame(animate);
-}
-
-animate();
-</script>
-
-// ✨ REVEAL
-const cards=document.querySelectorAll(".card");
-function reveal(){const trigger=window.innerHeight*0.85;cards.forEach(card=>{if(card.getBoundingClientRect().top<trigger){card.classList.add("reveal");}});}
-window.addEventListener("scroll",reveal);
-reveal();
-
-// 🔝 BOTÃO TOPO
-const topBtn=document.getElementById("topBtn");
-window.onscroll=function(){topBtn.style.display=window.scrollY>400?"block":"none";}
-topBtn.onclick=function(){window.scrollTo({top:0,behavior:'smooth'});}
-
-// 📜 ATIVAR LINK ATIVO
-const links=document.querySelectorAll(".sidebar a");
+// Botão topo
 window.addEventListener("scroll",()=>{
-let fromTop=window.scrollY+100;
-links.forEach(link=>{
-let section=document.querySelector(link.hash);
-if(section.offsetTop<=fromTop && section.offsetTop+section.offsetHeight>fromTop){
-link.classList.add("active");
-}else{
-link.classList.remove("active");
+document.querySelector(".top-btn").style.display=
+window.scrollY>400?"block":"none";
+});
+
+// Canvas fogo realista
+const canvas=document.getElementById("fireCanvas");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+window.addEventListener("resize",()=>{
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+});
+
+class Particle{
+constructor(){this.reset();}
+reset(){
+this.x=Math.random()*canvas.width;
+this.y=canvas.height+Math.random()*100;
+this.size=Math.random()*3+1;
+this.speedY=Math.random()*1.5+0.5;
+this.speedX=(Math.random()-0.5)*0.5;
+this.opacity=Math.random()*0.5+0.5;
+const colors=["255,200,0","255,140,0","255,90,0","255,40,0"];
+this.color=colors[Math.floor(Math.random()*colors.length)];
 }
-});
-});
+update(){
+this.y-=this.speedY;
+this.x+=this.speedX;
+this.opacity-=0.002;
+if(this.y<0||this.opacity<=0)this.reset();
+}
+draw(){
+ctx.beginPath();
+ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+ctx.fillStyle=`rgba(${this.color},${this.opacity})`;
+ctx.shadowColor=`rgba(${this.color},1)`;
+ctx.shadowBlur=15;
+ctx.fill();
+}
+}
+
+const particles=[];
+for(let i=0;i<140;i++){particles.push(new Particle());}
+
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+particles.forEach(p=>{p.update();p.draw();});
+requestAnimationFrame(animate);
+}
+animate();
 </script>
 
 </body>
