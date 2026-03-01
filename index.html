@@ -80,13 +80,32 @@ h1{
     margin-bottom:20px;
 }
 
-.subtitle{
-    text-align:center;
-    margin-bottom:100px;
-    color:#ccc;
+.hero {
+  text-align: center;
+  padding: 80px 20px 40px;
 }
 
-/* ===== BOX DOURADA (igual print) ===== */
+.main-title {
+  font-family: 'Cinzel', serif;
+  font-size: 64px;
+  letter-spacing: 3px;
+  background: linear-gradient(to bottom, #fff4c4, #d4af37);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  white-space: nowrap; /* força ficar em uma linha */
+}
+
+.subtitle {
+  color: #ccc;
+  margin-top: 10px;
+}
+
+.cp-block {
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+/* ===== BOX DOURADA ===== */
 .intro-box{
     background:rgba(20,20,20,0.85);
     border-radius:12px;
@@ -128,15 +147,66 @@ h1{
     color:#ccc;
 }
 
+#backToTop {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: #8b0000;
+  color: gold;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  display: none;
+  transition: 0.3s;
+  z-index: 9999;
+}
+
+#backToTop:hover {
+  background: #b22222;
+  transform: scale(1.1);
+}
+
 /* RESPONSIVO */
-@media(max-width:900px){
-    .menu{display:none;}
-    .container{padding-right:40px;}
+.mobile-menu-btn {
+  display: none;
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  font-size: 28px;
+  color: gold;
+  z-index: 9999;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+
+  .sidebar {
+    position: fixed;
+    right: -260px;
+    top: 0;
+    height: 100%;
+    width: 250px;
+    background: #0b0b0b;
+    transition: 0.4s;
+    padding-top: 80px;
+  }
+
+  .sidebar.active {
+    right: 0;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
 }
 </style>
 </head>
 <body>
-
+    
+<div class="mobile-menu-btn" onclick="toggleMenu()">☰</div>
+    
 <canvas id="embers"></canvas>
 
 <div class="menu">
@@ -158,8 +228,10 @@ h1{
 </div>
 
 <div class="container">
-    <h1>Burn the System</h1>
-    <div class="subtitle">Constituição da Aliança Burn the System</div>
+    <header class="hero">
+         <h1 class="main-title">Burn the System</h1>
+         <p class="subtitle">Constituição da Aliança Burn the System</p>
+    </header>
 
     <div class="intro-box">
         <p>Seja bem-vindo(a) à nossa Aliança!</p>
@@ -178,13 +250,15 @@ h1{
 
     <div class="section" id="s2">
         <h2>2. Estrutura de Liderança</h2>
-        <div>A Aliança é formada por 5 CPs, cada uma com Líder e Sub-Líder</div>div>
-        <div>
-        <<h3>CP Gaia:</h3> <p>Líder: Gaia <br> Sub-Líder: Jefera</p>
-        </div>
-        <div>
-        <h3>CP Fenix:</h3> <p>Líder: DarKnight <br> Sub-Líder: Chinaider</p>
-        </div>
+        <p>A Aliança é formada por 5 CPs, cada uma com Líder e Sub-Líder</p>
+        <p class="cp-block"><strong>CP Gaia:</strong><br>
+        Líder: Gaia<br>
+        Sub-Líder: Jefera
+        </p>
+        <p class="cp-block"><strong>>CP Fenix:</strong><br>
+        Líder: DarKnight<br> 
+        Sub-Líder: Chinaider
+        </p>
         <p><h3>CP Drako:</h3> Líder: Drako, Sub-Líder: Pohlzera</p>
         <p></p>
         <p><h3>CP BlackBurn:</h3> Líder: Zarth, Sub-Líder: MackGiver</p>
@@ -203,6 +277,7 @@ h1{
         <h2>3. Comunicação</h2>
         <p>Texto exemplo. Comunicação clara e estratégica é essencial.</p>
     </div>
+    <button id="backToTop">↑</button>
 </div>
 
 <script>
@@ -283,6 +358,25 @@ window.addEventListener("resize", () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 });
+
+const btn = document.getElementById("backToTop");
+
+window.onscroll = function () {
+  if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+    btn.style.display = "block";
+  } else {
+    btn.style.display = "none";
+  }
+};
+
+btn.addEventListener("click", function () {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});    
+
+function toggleMenu() {
+  document.querySelector('.sidebar').classList.toggle('active');
+}
+    
 </script>
 
 </body>
