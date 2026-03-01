@@ -62,10 +62,9 @@ canvas{
 
 /* ===== CONTEÚDO ===== */
 .container{
-    max-width:900px;
-    margin:auto;
-    padding:120px 40px;
-    padding-right:260px;
+    max-width: 1300px;
+    width: 90%;
+    margin: auto;
 }
 
 h1{
@@ -87,12 +86,15 @@ h1{
 
 .main-title {
   font-family: 'Cinzel', serif;
-  font-size: 64px;
-  letter-spacing: 3px;
+  font-size: clamp(38px, 6vw, 72px);
+  letter-spacing: 4px;
   background: linear-gradient(to bottom, #fff4c4, #d4af37);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  white-space: nowrap; /* força ficar em uma linha */
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  width: 100%;
 }
 
 .subtitle {
@@ -151,23 +153,24 @@ h1{
   position: fixed;
   bottom: 25px;
   right: 25px;
-  background: #8b0000;
-  color: gold;
+  background: linear-gradient(to bottom, #fff4c4, #d4af37);
+  color: #000;
   border: none;
   padding: 12px 16px;
-  border-radius: 50%;
+  border-radius: 8px; /* levemente arredondado */
   cursor: pointer;
-  font-size: 18px;
+  font-weight: bold;
   display: none;
   transition: 0.3s;
   z-index: 9999;
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.5);
 }
 
 #backToTop:hover {
-  background: #b22222;
   transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.9);
 }
-
+    
 /* RESPONSIVO */
 .mobile-menu-btn {
   display: none;
@@ -182,25 +185,35 @@ h1{
 
 @media (max-width: 900px) {
 
+  body {
+    overflow-x: hidden;
+  }
+
+  .content {
+    width: 92%;
+    max-width: 100%;
+  }
+
   .sidebar {
-    position: fixed;
-    right: -260px;
-    top: 0;
-    height: 100%;
     width: 250px;
-    background: #0b0b0b;
+    right: -260px;
     transition: 0.4s;
-    padding-top: 80px;
   }
 
   .sidebar.active {
     right: 0;
   }
 
-  .mobile-menu-btn {
-    display: block;
+  .main-title {
+    font-size: 38px;
+    letter-spacing: 2px;
+  }
+
+  .description-box {
+    width: 100%;
   }
 }
+    
 </style>
 </head>
 <body>
